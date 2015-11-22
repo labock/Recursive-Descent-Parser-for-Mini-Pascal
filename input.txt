@@ -1,0 +1,8 @@
+alex kopen const while 7
+do 'comment string here'
+(* all of this will
+definitely be ignored *)
+alpha := beta+gamma;
+'not finished
+{ another error
+will be here
