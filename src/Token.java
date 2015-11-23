@@ -11,6 +11,14 @@ public class Token {
         IDENTIFIER, KEYWORD, SYMBOL, UNSIGNEDINTEGER, CHARACTERSTRING, ERROR
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
     @Override
     public String toString() {
         return this.type + ", " + this.name;
