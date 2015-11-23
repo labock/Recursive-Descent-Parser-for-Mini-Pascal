@@ -1,0 +1,5 @@
+*.name
+.idea/compiler.xml
+.idea/misc.xml
+*.xml
+.idea/Recursive-Descent-Parser-for-Mini-Pascal.iml
