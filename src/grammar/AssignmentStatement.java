@@ -17,11 +17,9 @@ public class AssignmentStatement extends ParseTree{
     public Variable getVarPart(){
         return this.varPart;
     }
-
     public Expression getExprPart(){
         return this.exprPart;
     }
-
     public boolean hasError(){
         return this.hasError;
     }

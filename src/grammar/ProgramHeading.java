@@ -1,6 +1,6 @@
 package grammar;
 
-public class ProgramHeading{
+public class ProgramHeading extends ParseTree{
 
     public ProgramHeading(){}
 }
