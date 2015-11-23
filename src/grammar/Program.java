@@ -1,10 +1,12 @@
 package grammar;
 
+import token.Token;
+import java.util.List;
+
 public class Program extends ParseTree{
 
     private ProgramHeading programHeading;
     private Block block;
-    private boolean hasError;
 
     public Program(int startToken, int numTokens, boolean hasError, String errorMsg, ProgramHeading programHeading, Block block){
         super(startToken, numTokens, hasError, errorMsg);
@@ -15,40 +17,37 @@ public class Program extends ParseTree{
     public ProgramHeading getProgramHeading(){
         return this.programHeading;
     }
-    public Expression getExprPart(){
-        return this.exprPart;
-    }
-    public boolean hasError(){
-        return this.hasError;
+    public Block getBlock(){
+        return block;
     }
 
     public static Program parse(List<Token> tokens, int startToken){
         boolean hasErrors = false;
         String errorMsg = "Program";
 
-        ProgramHeader programHeader = programHeader.parse(tokens, startToken);
-        if(programHeader.hasErrors()){
-            this.hasError = true;
-            this.errorMsg += ": parse error in program header ";
+        ProgramHeading programHeading = programHeading.parse(tokens, startToken);
+        if(programHeading.hasError()){
+            hasErrors = true;
+            errorMsg += ": parse error in program header ";
         }
 
-        int nextToken = startToken + varPart.getNumTokens();
+        int nextToken = startToken + programHeading.getNumTokens();
 
         if(!tokens.get(nextToken).getName().equals(";")){
-            this.hasError = true;
-            this.errorMsg += ": parse error in symbol ; ";
+            hasErrors = true;
+            errorMsg += ": parse error in symbol ; ";
         }
 
         nextToken++;
 
         Block block = block.parse(tokens, nextToken);
         if(block.hasError()){
-            this.hasError = true;
+            hasErrors = true;
             errorMsg += ": parse error in block";
         }
 
-        int numTokens = varPart.getNumTokens() + 1 + exprPart.getNumTokens();
+        int numTokens = programHeading.getNumTokens() + 1 + block.getNumTokens();
 
-        return new Program(startToken, numTokens, hasErrors, errorMsg, programHeader, block);
+        return new Program(startToken, numTokens, hasErrors, errorMsg, programHeading, block);
     }
 }

@@ -1,3 +1,5 @@
+package grammar;
+
 import token.ProgramParseTree;
 import token.Token;
 
@@ -5,12 +7,20 @@ import java.util.ArrayList;
 
 public abstract class ParseTree {
 
-    protected int startToken, numTokens;
-    protected boolean hasError;
-    protected String errorMessage;
+    protected static int startToken, numTokens;
+    protected static boolean hasError;
+    protected static String errorMsg;
+
+    public ParseTree(int startToken, int numTokens, boolean hasError, String errorMsg){
+        this.startToken = startToken;
+        this.numTokens = numTokens;
+        this.hasError = hasError;
+        this.errorMsg = errorMsg;
+    }
 
     public static ParseTree parse(ArrayList<Token> tokens) {
-        return ProgramParseTree.parse(tokens);
+        ProgramParseTree ppt = new ProgramParseTree();
+        return ppt.parse(tokens);
     }
 
     public int getStartToken() {
@@ -21,11 +31,11 @@ public abstract class ParseTree {
         return numTokens;
     }
 
-    public boolean isHasError() {
+    public boolean hasError() {
         return hasError;
     }
 
     public String getErrorMessage() {
-        return errorMessage;
+        return errorMsg;
     }
 }
