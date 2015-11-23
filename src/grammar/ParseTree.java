@@ -1,3 +1,6 @@
+import token.ProgramParseTree;
+import token.Token;
+
 import java.util.ArrayList;
 
 public abstract class ParseTree {

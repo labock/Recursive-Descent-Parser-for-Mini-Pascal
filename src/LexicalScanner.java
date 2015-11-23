@@ -1,3 +1,6 @@
+import token.*;
+import token.Error;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -123,7 +126,7 @@ public class LexicalScanner {
                                 if (tempString.charAt(currentCharacterIndex) != '\'') {
                                     // Create and add an error character string
                                     System.out.println("error added - NON-TERMINATED STRING");
-                                    results.add(new Error("ERROR: NON-TERMINATED STRING"));
+                                    results.add(new token.Error("ERROR: NON-TERMINATED STRING"));
                                 } else {
                                     // Add the character string to the resulting tokens
                                     System.out.println("character string added - " + tempStringBuilder.toString());

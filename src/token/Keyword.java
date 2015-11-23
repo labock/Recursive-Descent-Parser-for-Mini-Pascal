@@ -1,7 +1,9 @@
+package token;
+
 public class Keyword extends Token {
 
     public Keyword(String name) {
-        super(name, Type.KEYWORD);
+        super(name, Token.Type.KEYWORD);
     }
 
 }

@@ -1,3 +1,5 @@
+package token;
+
 public class Token {
     private String name;
     private Type type;

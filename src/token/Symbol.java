@@ -1,3 +1,5 @@
+package token;
+
 public class Symbol extends Token {
 
     public Symbol(String name) {
