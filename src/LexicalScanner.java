@@ -9,8 +9,9 @@ import java.util.Scanner;
 public class LexicalScanner {
     public static void main(String args[]) {
         ArrayList<Token> tokens = readAndCreateTokens(new File("input.txt"));
-        ParseTree pt = parser(tokens);
-        writeToFile(tokens, new File("output.txt"));
+        ProgramParseTree programParseTree = new ProgramParseTree();
+        ParseTree parseTree = programParseTree.parse(tokens);
+        writeToFile(parseTree, new File("output.txt"));
     }
 
     public static ArrayList<Token> readAndCreateTokens(File file) {
@@ -293,18 +294,12 @@ public class LexicalScanner {
         return results;
     }
 
-    public static ProgramParseTree parser (ArrayList<Token> tokens){
-        return new ProgramParseTree();
-    }
-
-    public static void writeToFile(ArrayList<Token> tokens, File file) {
+    public static void writeToFile(ParseTree parseTree, File file) {
         PrintWriter pw;
         try {
             pw = new PrintWriter(file);
 
-            for (Token token : tokens) {
-                pw.print(token + "\n");
-            }
+            pw.print(parseTree.toString());
 
             pw.close();
 
