@@ -1,5 +1,5 @@
 package grammar;
 
-public class ConstantDefinition{
+public class ConstantDefinition extends ParseTree{
     public ConstantDefinition(){}
 }
