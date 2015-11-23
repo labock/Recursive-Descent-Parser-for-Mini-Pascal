@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-abstract public class ParseTree {
+public abstract class ParseTree {
 
     protected int startToken, numTokens;
     protected boolean hasError;
