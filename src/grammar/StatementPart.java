@@ -1,5 +1,7 @@
 package grammar;
 
+
+
 public class StatementPart extends ParseTree{
 	private CompoundStatement compState;
 	private boolean hasError;
@@ -23,7 +25,7 @@ public class StatementPart extends ParseTree{
         CompoundStatement compState = CompoundStatement.parse(tokens, startToken);
         if(compState.hasError()){ //did the compound statement have errors?
             this.hasError = true;
-            this.errorMsg += ": parse error in variable ";
+            this.errorMsg += ": parse error in Compound Statement";
         }
         
         int numTokens = compState.getNumTokens();

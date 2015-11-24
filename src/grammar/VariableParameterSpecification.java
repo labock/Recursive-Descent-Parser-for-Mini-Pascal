@@ -1,7 +1,9 @@
 package grammar;
+import token.Token;
 
-/**
- * Created by Luke's PC on 11/22/2015.
- */
-public class VariableParameterSpecification {
+import java.util.List;
+
+public class VariableParameterSpecification extends ParseTree{
+	
+
 }

@@ -26,12 +26,12 @@ public class VariableDeclaration extends ParseTree{
 
     public static VariableDeclaration parse(List<Token> tokens, int startToken){
         boolean hasErrors = false;
-        String errorMsg = "Assignment Statement";
+        String errorMsg = "Variable Declaration";
 
         IdentifierList iList = IdentifierList.parse(tokens, startToken);
         if(iList.hasError()){ //did the variable part have errors?
             this.hasError = true;
-            this.errorMsg += ": parse error in variable ";
+            this.errorMsg += ": parse error in Identifier List";
         }
 
         int nextToken = startToken + iList.getNumTokens(); //move the pointer to the end of the variable tokens
@@ -46,7 +46,7 @@ public class VariableDeclaration extends ParseTree{
         Type type = Type.parse(tokens, nextToken);
         if(type.hasError()){ //did the expression part have errors?
             this.hasError = true;
-            errorMsg += ": parse error in expression";
+            errorMsg += ": parse error in Type";
         }
 
         int numTokens = iList.getNumTokens() + 1 + type.getNumTokens();

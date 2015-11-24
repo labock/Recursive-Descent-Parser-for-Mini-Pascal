@@ -1,8 +1,9 @@
 package grammar;
 
-/**
- * Created by Luke's PC on 11/22/2015.
- */
+import token.Token;
+
+import java.util.List;
+
 public class AssignmentStatement extends ParseTree{
     private Variable varPart;
     private Expression exprPart;

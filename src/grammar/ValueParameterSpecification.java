@@ -29,12 +29,12 @@ public class ValueParameterSpecification extends ParseTree{
 
 	    public static ValueParameterSpecification parse(List<Token> tokens, int startToken){
 	        boolean hasErrors = false;
-	        String errorMsg = "Assignment Statement";
+	        String errorMsg = "Value Parameter Specification";
 
 	        IdentifierList iList = IdentifierList.parse(tokens, startToken);
 	        if(iList.hasError()){ //did the variable part have errors?
 	            this.hasError = true;
-	            this.errorMsg += ": parse error in variable ";
+	            this.errorMsg += ": parse error in Identifier List ";
 	        }
 
 	        int nextToken = startToken + iList.getNumTokens(); //move the pointer to the end of the variable tokens
@@ -49,7 +49,7 @@ public class ValueParameterSpecification extends ParseTree{
 	        TypeIdentifier tIdent = TypeIdentifier.parse(tokens, nextToken);
 	        if(tIdent.hasError()){ //did the expression part have errors?
 	            this.hasError = true;
-	            errorMsg += ": parse error in expression";
+	            errorMsg += ": parse error in Type Identifier";
 	        }
 
 	        int numTokens = iList.getNumTokens() + 1 + tIdent.getNumTokens();
